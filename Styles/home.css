@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    text-align: center;
+    padding: 2rem;
+}
+
+h1 {
+    font-size: 4rem;
+    color: #ffff00;
+    text-shadow: 2px 2px 4px rgba(255, 255, 0, 0.5);
+    margin-bottom: 2rem;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.menu {
+    background-color: rgba(33, 33, 33, 0.9);
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#startGame {
+    background-color: #ffff00;
+    color: #000;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+#startGame:hover {
+    transform: scale(1.05);
+    background-color: #fff;
+}
+
+.instructions {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.instructions h2 {
+    color: #ffff00;
+    margin-bottom: 1rem;
+}
+
+.instructions ul {
+    list-style-position: inside;
+    padding-left: 1rem;
+}
+
+.instructions li {
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.characters {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.character {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.character img {
+    width: 40px;
+    height: 40px;
+    animation: float 2s infinite ease-in-out;
+}
+
+.character span {
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 3rem;
+    }
+    
+    .menu {
+        padding: 1rem;
+    }
+    
+    .characters {
+        gap: 1rem;
+    }
+    
+    .character img {
+        width: 30px;
+        height: 30px;
+    }
+}
