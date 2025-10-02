@@ -1,8 +1,23 @@
 body {
     text-align: center;
     overflow: hidden;
+    background-color: black;
 }
 
 #board {
     background-color: black;
+}
+
+#gameContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+#scoreboard {
+    color: yellow;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    text-align: left;
 }

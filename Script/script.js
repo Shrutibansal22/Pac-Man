@@ -29,7 +29,7 @@ const tileMap = [
     "XXXX XXXX XXXX XXXX",
     "OOOX X       X XOOO",
     "XXXX X XXrXX X XXXX",
-    "X       bpo       X",
+    "       bpo         ",
     "XXXX X XXXXX X XXXX",
     "OOOX X       X XOOO",
     "XXXX X XXXXX X XXXX",
@@ -164,20 +164,19 @@ function draw() {
         context.fillRect(food.x, food.y, food.width, food.height);
     }
 
-    //score
-    context.fillStyle = "white";
-    context.font="14px sans-serif";
-    if (gameOver) {
-        context.fillText("Game Over: " + String(score), tileSize/2, tileSize/2);
-    }
-    else {
-        context.fillText("x" + String(lives) + " " + String(score), tileSize/2, tileSize/2);
-    }
+    document.getElementById("score").innerText = "Score: " + score;
+    document.getElementById("lives").innerText = "Lives: " + lives;
 }
 
 function move() {
     pacman.x += pacman.velocityX;
     pacman.y += pacman.velocityY;
+
+    if (pacman.x < 0) {
+        pacman.x = boardWidth - pacman.width;
+    } else if (pacman.x + pacman.width > boardWidth) {
+        pacman.x = 0;
+    }
 
     //check wall collisions
     for (let wall of walls.values()) {
