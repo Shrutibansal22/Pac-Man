@@ -1,6 +1,7 @@
 body {
     text-align: center;
-    overflow: hidden;
+    /* keep scrolling available in case canvas overflows on small screens */
+    overflow: auto;
     background-color: black;
     margin: 0;
     padding: 1rem;
@@ -10,10 +11,15 @@ body {
     align-items: center;
 }
 
+/* The canvas will have its internal drawing size set by JS (board.width/height).
+   We allow CSS to scale it responsively while keeping it centered. */
 #board {
     background-color: black;
+    display: block; /* remove inline default spacing */
     max-width: 100%;
+    width: 100%;
     height: auto;
+    image-rendering: pixelated; /* keeps crisp pixels when scaled */
 }
 
 #gameContainer {
@@ -24,15 +30,33 @@ body {
     gap: 20px;
     width: 100%;
     max-width: 800px;
+    position: relative; /* create positioning context for scoreboard */
 }
 
+/* place scoreboard on top of canvas so it's always visible */
 #scoreboard {
     color: yellow;
-    font-size: clamp(16px, 4vw, 20px);
+    font-size: clamp(14px, 3.5vw, 20px);
     font-family: Arial, sans-serif;
     text-align: center;
     width: 100%;
     display: flex;
     justify-content: space-around;
     padding: 0.5rem;
+    background: rgba(0,0,0,0.6);
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+    z-index: 10;
+    border-radius: 6px;
+}
+
+/* Add spacing at top of container so canvas doesn't sit underneath the scoreboard */
+.game-canvas-wrapper {
+    width: 100%;
+    padding-top: 3rem; /* ensure scoreboard has space above the canvas */
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
 }
