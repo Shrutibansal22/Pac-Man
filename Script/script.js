@@ -52,6 +52,12 @@ const directions = ['U', 'D', 'L', 'R'];
 let score = 0;
 let lives = 3;
 let gameOver = false;
+let highScore = parseInt(localStorage.getItem("pacmanHighScore")) || 0;
+
+document.addEventListener("DOMContentLoaded", () => {
+  const highScoreElem = document.getElementById("highScore");
+  if (highScoreElem) highScoreElem.innerText = "High Score: " + highScore;
+});
 
 window.onload = function() {
     board = document.getElementById("board");
@@ -205,6 +211,8 @@ function draw() {
 
     document.getElementById("score").innerText = "Score: " + score;
     document.getElementById("lives").innerText = "Lives: " + lives;
+    document.getElementById("highScore").innerText = "High Score: " + highScore;
+
 }
 
 function move() {
@@ -259,6 +267,11 @@ function move() {
         if (collision(pacman, food)) {
             foodEaten = food;
             score += 10;
+
+            if (score > highScore) {
+            highScore = score;
+            localStorage.setItem("pacmanHighScore", highScore);
+    }
             break;
         }
     }
@@ -278,6 +291,7 @@ function movePacman(e) {
         lives = 3;
         score = 0;
         gameOver = false;
+        document.getElementById("highScore").innerText = "High Score: " + highScore;
         update(); 
         return;
     }

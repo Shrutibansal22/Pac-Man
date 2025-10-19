@@ -80,6 +80,10 @@ body {
   image-rendering: pixelated;
 }
 
+#highScore {
+  color: #00ff00; /* green glow for highest score */
+}
+
 @media (max-width: 600px) {
   .navbar {
     flex-direction: column;
