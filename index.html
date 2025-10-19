@@ -5,17 +5,29 @@
         <meta name="viewport", content="width=device-width, initial-scale=1.0">
         <title>Pac-Man</title>
         <link rel="stylesheet" href="Styles/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
         <script src="Script/script.js"></script>
     </head>
     <body>
+        <nav class="navbar">
+            <div class="nav-left">
+                <button id="homeButton"><i class="fa-solid fa-house"></i> Home</button>
+            </div>
+            <div class="nav-right">
+                <p id="score">Score: 0</p>
+                <p id="lives">Lives: 3</p>
+            </div>
+        </nav>
         <div id="gameContainer">
             <div class="game-canvas-wrapper">
                 <canvas id="board"></canvas>
             </div>
-            <div id="scoreboard">
-            <p id="score">Score: 0</p>
-            <p id="lives">Lives: 3</p>
         </div>
-    </div>
+
+        <script>
+        document.getElementById("homeButton").addEventListener("click", () => {
+        window.location.href = "home.html";
+        });
+        </script>
     </body>
 </html>
